@@ -238,6 +238,7 @@ def main() -> None:
     missing_org_unit_ids = 0
     beyond_woreda_count = 0
     facility_groups: Dict[str, Dict[str, object]] = {}
+    missing_coordinate_rows: List[Dict[str, object]] = []
     misplaced_rows: List[Dict[str, object]] = []
 
     for tei in tracked_entities:
@@ -269,6 +270,20 @@ def main() -> None:
 
         if not te_coords:
             missing_coordinate_entities += 1
+            missing_row = {
+                "trackedEntity": tei_id,
+                "name": name_value,
+                "orgUnit": org_unit_id,
+                "orgUnitName": org_units.get(org_unit_id, {}).get("name", ""),
+                "missingReason": "No coordinate in geometry or attribute",
+            }
+            for attr_id, value in attribute_values_by_id.items():
+                missing_row[f"attr_{attr_id}"] = value
+            for friendly_key, value in attribute_values_by_name.items():
+                column_name = f"attr_{friendly_key}"
+                if column_name not in missing_row:
+                    missing_row[column_name] = value
+            missing_coordinate_rows.append(missing_row)
             continue
 
         facility_distance_to_center = None
@@ -390,6 +405,23 @@ def main() -> None:
         writer.writeheader()
         writer.writerows(rows)
 
+    missing_coordinates_csv_path: Optional[Path] = None
+    if missing_coordinate_rows:
+        missing_coordinate_rows.sort(key=lambda row: (row.get("orgUnitName") or "", row.get("trackedEntity") or ""))
+        missing_coordinates_csv_path = OUTPUT_SUBDIR / "tracked_entities_missing_coordinates.csv"
+        with missing_coordinates_csv_path.open("w", newline="", encoding="utf-8") as handle:
+            missing_fieldnames = [
+                "trackedEntity",
+                "name",
+                "orgUnit",
+                "orgUnitName",
+                "missingReason",
+            ]
+            missing_attr_columns = sorted({key for row in missing_coordinate_rows for key in row.keys() if key.startswith("attr_")})
+            writer = csv.DictWriter(handle, fieldnames=missing_fieldnames + missing_attr_columns)
+            writer.writeheader()
+            writer.writerows(missing_coordinate_rows)
+
     if misplaced_rows:
         misplaced_rows.sort(key=lambda row: (row.get("orgUnitName") or "", row.get("trackedEntity") or ""))
         with MISPLACED_OUTPUT_PATH.open("w", newline="", encoding="utf-8") as handle:
@@ -424,6 +456,8 @@ def main() -> None:
     if misplaced_rows:
         print(f"Wrote {len(misplaced_rows)} misplaced tracked entities to {MISPLACED_OUTPUT_PATH}")
         print(f"Wrote misplaced tracked entities JSON to {MISPLACED_JSON_PATH}")
+    if missing_coordinates_csv_path:
+        print(f"Wrote tracked entities missing coordinates to {missing_coordinates_csv_path}")
 
 
 if __name__ == "__main__":
