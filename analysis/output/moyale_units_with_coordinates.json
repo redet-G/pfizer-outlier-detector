@@ -1,0 +1,113 @@
+{
+  "woreda": "Moyale",
+  "units": [
+    {
+      "name": "Arda Ola Health Post",
+      "id": "yJXb07N6AIw",
+      "latitude": 3.599,
+      "longitude": 39.137571
+    },
+    {
+      "name": "Lagasure Health Post",
+      "id": "ZN7yYiuD7qI",
+      "latitude": 3.639423,
+      "longitude": 39.036398
+    },
+    {
+      "name": "Bede Health Post",
+      "id": "tpLwwHEZcYT",
+      "latitude": 3.582421,
+      "longitude": 39.20964
+    },
+    {
+      "name": "Dhukiso Health Center",
+      "id": "uxlEsOvpBjJ",
+      "latitude": 3.535479,
+      "longitude": 39.295282
+    },
+    {
+      "name": "Tuladaye Health Post",
+      "id": "C30WfA8S96I",
+      "latitude": 3.560931,
+      "longitude": 39.316828
+    },
+    {
+      "name": "El-Gof Health Post",
+      "id": "VNhH5EYKFt1",
+      "latitude": 3.856904,
+      "longitude": 39.062699
+    },
+    {
+      "name": "El-Ley Health Center",
+      "id": "rVkaF3mIzdj",
+      "latitude": 3.766153,
+      "longitude": 39.225912
+    },
+    {
+      "name": "Karaya Health Post",
+      "id": "ePMjFhhTUdh",
+      "latitude": 4.04317,
+      "longitude": 39.612432
+    },
+    {
+      "name": "Kojuwa Health Post",
+      "id": "t3U56qubxaZ",
+      "latitude": 4.063178,
+      "longitude": 39.321282
+    },
+    {
+      "name": "Lagasade Health Post",
+      "id": "O8pSced5bwR",
+      "latitude": 3.774509,
+      "longitude": 39.368301
+    },
+    {
+      "name": "Sororo Health Post",
+      "id": "i4tyzTOwzVx",
+      "latitude": 4.035661,
+      "longitude": 39.723618
+    },
+    {
+      "name": "Chamuk Health Post",
+      "id": "QJa5K8WhGs2",
+      "latitude": 3.584425,
+      "longitude": 39.04712
+    },
+    {
+      "name": "Madomigo Health Post",
+      "id": "G7ZgowvYyqi",
+      "latitude": 3.558107,
+      "longitude": 39.047011
+    },
+    {
+      "name": "Malab Health Post",
+      "id": "KzIu5DN8mcE",
+      "latitude": 3.597661,
+      "longitude": 39.046166
+    },
+    {
+      "name": "Moyale Health Center",
+      "id": "rOmJoBjKZr9",
+      "latitude": 3.546607,
+      "longitude": 39.062353
+    }
+  ],
+  "missingCoordinates": [
+    { "id": "aR73RCBtXRs", "name": "Abitu Health Post" },
+    { "id": "NXHSBFHcNRa", "name": "AF-Goye Health Center" },
+    { "id": "ZLDyotgOhBJ", "name": "Galgaludmitu Health Post" },
+    { "id": "vrQXqHVnkIL", "name": "Gulale HP" },
+    { "id": "YRrFiNgI3Uk", "name": "Halohuluko Health Post" },
+    { "id": "ieTOtQMVyGx", "name": "Nanawa Health Post" },
+    { "id": "f1g3A7pxJzf", "name": "Didguchi Health Post" },
+    { "id": "krOPXivnCzd", "name": "Elfetu Health Post" },
+    { "id": "JZYZzyPVpqn", "name": "Hagardhere Health Post" },
+    { "id": "mOar4JKlg0f", "name": "Jima Comprehensive Health Post" },
+    { "id": "kKhSrBeZuH9", "name": "Malmal Health Post" },
+    { "id": "n8yB1GEWakk", "name": "Raro Health Post" },
+    { "id": "YU2gigxCxz4", "name": "Buladi Health Post" },
+    { "id": "kk5x9uEZmYo", "name": "Burgab Health Post" },
+    { "id": "TC1Jg0mxQ5r", "name": "Halgan Health Post" },
+    { "id": "QaUEN4XMm5w", "name": "Kabanawa Health Post" }
+  ]
+}
