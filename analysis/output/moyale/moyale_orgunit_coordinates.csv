@@ -1,16 +1,16 @@
-id,name,latitude,longitude
-yJXb07N6AIw,Arda Ola Health Post,3.599000,39.137571
-ZN7yYiuD7qI,Lagasure Health Post,3.639423,39.036398
-tpLwwHEZcYT,Bede Health Post,3.582421,39.209640
-uxlEsOvpBjJ,Dhukiso Health Center,3.535479,39.295282
-C30WfA8S96I,Tuladaye Health Post,3.560931,39.316828
-VNhH5EYKFt1,El-Gof Health Post,3.856904,39.062699
-rVkaF3mIzdj,El-Ley Health Center,3.766153,39.225912
-ePMjFhhTUdh,Karaya Health Post,4.043170,39.612432
-t3U56qubxaZ,Kojuwa Health Post,4.063178,39.321282
-O8pSced5bwR,Lagasade Health Post,3.774509,39.368301
-i4tyzTOwzVx,Sororo Health Post,4.035661,39.723618
-QJa5K8WhGs2,Chamuk Health Post,3.584425,39.047120
-G7ZgowvYyqi,Madomigo Health Post,3.558107,39.047011
-KzIu5DN8mcE,Malab Health Post,3.597661,39.046166
-rOmJoBjKZr9,Moyale Health Center,3.546607,39.062353
+id         , name                 , latitude, longitude
+yJXb07N6AIw, Arda Ola Health Post , 3.599000, 39.137571
+ZN7yYiuD7qI, Lagasure Health Post , 3.639423, 39.036398
+tpLwwHEZcYT, Bede Health Post     , 3.582421, 39.209640
+uxlEsOvpBjJ, Dhukiso Health Center, 3.535479, 39.295282
+C30WfA8S96I, Tuladaye Health Post , 3.560931, 39.316828
+VNhH5EYKFt1, El-Gof Health Post   , 3.856904, 39.062699
+rVkaF3mIzdj, El-Ley Health Center , 3.766153, 39.225912
+ePMjFhhTUdh, Karaya Health Post   , 4.043170, 39.612432
+t3U56qubxaZ, Kojuwa Health Post   , 4.063178, 39.321282
+O8pSced5bwR, Lagasade Health Post , 3.774509, 39.368301
+i4tyzTOwzVx, Sororo Health Post   , 4.035661, 39.723618
+QJa5K8WhGs2, Chamuk Health Post   , 3.584425, 39.047120
+G7ZgowvYyqi, Madomigo Health Post , 3.558107, 39.047011
+KzIu5DN8mcE, Malab Health Post    , 3.597661, 39.046166
+rOmJoBjKZr9, Moyale Health Center , 3.546607, 39.062353

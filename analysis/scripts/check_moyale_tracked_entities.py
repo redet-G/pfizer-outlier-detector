@@ -258,15 +258,17 @@ def main() -> None:
         for attr in attributes:
             attr_id = attr.get("attribute")
             value = attr.get("value")
+            if not attr_id:
+                continue
             if attr_id == COORDINATE_ATTRIBUTE_ID:
                 te_coords = te_coords or parse_coordinate(value)
             elif attr_id in NAME_ATTRIBUTE_IDS and not name_value:
                 name_value = str(value or "")
-            if attr_id:
-                attribute_values_by_id[attr_id] = value
-                friendly_key = attribute_header_map.get(attr_id)
-                if friendly_key:
-                    attribute_values_by_name[friendly_key] = value
+
+            attribute_values_by_id[attr_id] = value
+            friendly_key = attribute_header_map.get(attr_id)
+            if friendly_key:
+                attribute_values_by_name[friendly_key] = value
 
         if not te_coords:
             missing_coordinate_entities += 1
@@ -278,11 +280,12 @@ def main() -> None:
                 "missingReason": "No coordinate in geometry or attribute",
             }
             for attr_id, value in attribute_values_by_id.items():
-                missing_row[f"attr_{attr_id}"] = value
-            for friendly_key, value in attribute_values_by_name.items():
-                column_name = f"attr_{friendly_key}"
-                if column_name not in missing_row:
-                    missing_row[column_name] = value
+                if attr_id == COORDINATE_ATTRIBUTE_ID:
+                    continue
+                friendly_key = attribute_header_map.get(attr_id)
+                if not friendly_key:
+                    continue
+                missing_row[f"attr_{friendly_key}"] = value
             missing_coordinate_rows.append(missing_row)
             continue
 
@@ -324,15 +327,14 @@ def main() -> None:
             "distance_to_woreda_center_km": f"{distance_to_center:.2f}",
             "facility_distance_to_center_km": f"{facility_distance_to_center:.2f}" if facility_distance_to_center is not None else "",
             "combined_distance_via_facility_km": f"{combined_distance:.2f}" if combined_distance is not None else "",
-            "createdAt": tei.get("createdAt", ""),
-            "updatedAt": tei.get("updatedAt", ""),
         }
         for attr_id, value in attribute_values_by_id.items():
-            row[f"attr_{attr_id}"] = value
-        for friendly_key, value in attribute_values_by_name.items():
-            friendly_column = f"attr_{friendly_key}"
-            if friendly_column not in row:
-                row[friendly_column] = value
+            if attr_id == COORDINATE_ATTRIBUTE_ID:
+                continue
+            friendly_key = attribute_header_map.get(attr_id)
+            if not friendly_key:
+                continue
+            row[f"attr_{friendly_key}"] = value
         rows.append(row)
 
         if is_misplaced:
@@ -370,8 +372,6 @@ def main() -> None:
                 "distanceToWoredaCenterKm": round(distance_to_center, 2),
                 "facilityDistanceToCenterKm": round(facility_distance_to_center, 2) if facility_distance_to_center is not None else None,
                 "combinedDistanceViaFacilityKm": round(combined_distance, 2) if combined_distance is not None else None,
-                "createdAt": tei.get("createdAt", ""),
-                "updatedAt": tei.get("updatedAt", ""),
                 "attributes": {
                     "byId": dict(attribute_values_by_id),
                     "byName": dict(attribute_values_by_name),
@@ -389,9 +389,7 @@ def main() -> None:
         "distance_to_facility_km",
         "distance_to_woreda_center_km",
         "facility_distance_to_center_km",
-        "combined_distance_via_facility_km",
-        "createdAt",
-        "updatedAt",
+    "combined_distance_via_facility_km",
     ]
 
     # Ensure attribute columns appear in CSV header consistently
